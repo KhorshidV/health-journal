@@ -1,23 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import ActivityForm from './components/PersonalInfoForm';
+import ActivityList from './components/PersonalInfoList';
 
 function App() {
+  const [activities, setActivities] = useState([]);
+
+  const handleAddActivity = (userData) => {
+    setActivities([...activities, userData]);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>My Health Tracker</h1>
+      <ActivityForm onAddActivity={handleAddActivity} />
+      <ActivityList activities={activities} />
     </div>
   );
 }
