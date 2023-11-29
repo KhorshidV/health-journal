@@ -1,85 +1,79 @@
 import React, { useState } from 'react';
-import ActivityFormStyle from '../styles/ActivityForm.module.css';
+import { useNavigate } from 'react-router-dom';
+import PersonalInfoFormStyle from '../styles/PersonalInfoForm.module.css';
 
-const ActivityForm = ({ onAddActivity }) => {
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [age, setAge] = useState('');
-  const [gender, setGender] = useState('');
+const PersonalInfoForm = () => {
+  const navigate = useNavigate();
+  const [userData, setUserData] = useState({
+    firstName: '',
+    lastName: '',
+    age: '',
+    gender: '',
+    activity: '',
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setUserData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const userData = {
-      firstName,
-      lastName,
-      age,
-      gender,
-    };
-    onAddActivity(userData);
-    setFirstName('');
-    setLastName('');
-    setAge('');
-    setGender('');
+    navigate('/display', { state: { userData } });
   };
 
   return (
-    <div className='form-container'>
-        <form className={ActivityFormStyle.form} onSubmit={handleSubmit}>
-       
-        <label>
-            <p>
-            First Name:
-            </p>
-            <input
-            type="text"
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
-            required
-            />
-        </label>
-        <label>
-            <p>
-            Last Name:
-            </p> 
-            <input
-            type="text"
-            value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
-            required
-            />
-        </label>
-        <label>
-            <p>
-            Age:
-            </p>
-            <input
-            type="number"
-            value={age}
-            onChange={(e) => setAge(e.target.value)} 
-            required
-            />
-        </label>
-        <label>
-            <p>
-            Gender:
-            </p>
-            <select
-            value={gender}
-            onChange={(e) => setGender(e.target.value)}
-            required
-            >
-            <option value="">Select Gender</option>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-            <option value="other">Other</option>
-            </select>
-        </label>
-        <div className="button-container">
-          <button type="submit">Add Activity</button>
-        </div>
-        </form>
-    </div>
+    <form className= {PersonalInfoFormStyle} onSubmit={handleSubmit}>
+      <label>
+        <p>
+        First Name:
+        </p>
+        <input
+          type="text"
+          name="firstName"
+          value={userData.firstName}
+          onChange={handleChange}
+        />
+      </label>
+      <label>
+        <p>
+        Last Name:
+        </p>
+        <input
+          type="text"
+          name="lastName"
+          value={userData.lastName}
+          onChange={handleChange}
+        />
+      </label>
+      <label>
+        <p>
+        Age:
+        </p>
+        <input
+          type="number"
+          name="age"
+          value={userData.age}
+          onChange={handleChange}
+        />
+      </label>
+      <label>
+        <p>
+        Gender:
+        </p>
+        <input
+          type="text"
+          name="gender"
+          value={userData.gender}
+          onChange={handleChange}
+        />
+      </label>
+      <button type="submit">Add Activity</button>
+    </form>
   );
 };
 
-export default ActivityForm;
+export default PersonalInfoForm;

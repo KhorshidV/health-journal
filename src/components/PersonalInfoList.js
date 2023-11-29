@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ActivityList = ({ activities }) => {
+const PersonalInfoList = ({ activities }) => {
   return (
     <div>
       {activities.map((userData, index) => (
@@ -21,4 +21,4 @@ const ActivityList = ({ activities }) => {
   );
 };
 
-export default ActivityList;
+export default PersonalInfoList;

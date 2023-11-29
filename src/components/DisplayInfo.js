@@ -1,7 +1,7 @@
 import React from 'react';
 
 const DisplayInfo = ({ location }) => {
-  const { userData } = location.state || {};
+  const userData = location.state?.userData; // Use optional chaining to avoid errors
 
   if (!userData) {
     return <div>No data to display.</div>;

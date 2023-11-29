@@ -1,20 +1,17 @@
-import React, { useState } from 'react';
-import ActivityForm from './components/PersonalInfoForm';
-import ActivityList from './components/PersonalInfoList';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import PersonalInfoForm from './components/PersonalInfoForm';
+import DisplayInfo from './components/DisplayInfo';
 
 function App() {
-  const [activities, setActivities] = useState([]);
-
-  const handleAddActivity = (userData) => {
-    setActivities([...activities, userData]);
-  };
-
   return (
-    <div>
-      <h1>My Health Tracker</h1>
-      <ActivityForm onAddActivity={handleAddActivity} />
-      <ActivityList activities={activities} />
-    </div>
+    <Router>
+      <h1>My Health Journal</h1>
+      <Routes>
+        <Route path="/" element={<PersonalInfoForm />} />
+        <Route path="/display" element={<DisplayInfo />} />
+      </Routes>
+    </Router>
   );
 }
 
