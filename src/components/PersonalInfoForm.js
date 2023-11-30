@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import PersonalInfoFormStyle from '../styles/PersonalInfoForm.module.css';
+import PersonalInfoFormStyle from '../styles/PersonalInfoForm.module.css'
 
 const PersonalInfoForm = () => {
   const navigate = useNavigate();
@@ -9,7 +9,6 @@ const PersonalInfoForm = () => {
     lastName: '',
     age: '',
     gender: '',
-    activity: '',
   });
 
   const handleChange = (e) => {
@@ -22,6 +21,7 @@ const PersonalInfoForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log('Submitting form with data:', userData);
     navigate('/display', { state: { userData } });
   };
 
@@ -36,6 +36,7 @@ const PersonalInfoForm = () => {
           name="firstName"
           value={userData.firstName}
           onChange={handleChange}
+          required
         />
       </label>
       <label>
@@ -47,6 +48,7 @@ const PersonalInfoForm = () => {
           name="lastName"
           value={userData.lastName}
           onChange={handleChange}
+          required
         />
       </label>
       <label>
@@ -58,6 +60,7 @@ const PersonalInfoForm = () => {
           name="age"
           value={userData.age}
           onChange={handleChange}
+          required
         />
       </label>
       <label>
@@ -69,11 +72,17 @@ const PersonalInfoForm = () => {
           name="gender"
           value={userData.gender}
           onChange={handleChange}
+          required
         />
       </label>
-      <button type="submit">Add Activity</button>
+      <button type="submit">Continue</button>
     </form>
   );
 };
 
 export default PersonalInfoForm;
+
+
+
+
+

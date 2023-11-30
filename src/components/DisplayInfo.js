@@ -1,13 +1,15 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 
-const DisplayInfo = ({ location }) => {
-  const userData = location.state?.userData; // Use optional chaining to avoid errors
 
-  if (!userData) {
-    return <div>No data to display.</div>;
-  }
+const DisplayInfo = () => {
+    const location = useLocation();
+    const userData = location.state?.userData;
 
-  return (
+    if (!userData) {
+        return <div>No data to display.</div>;
+    }
+    return (
     <div>
       <h2>Entered Information</h2>
       <p>
@@ -21,9 +23,6 @@ const DisplayInfo = ({ location }) => {
       </p>
       <p>
         <strong>Gender:</strong> {userData.gender}
-      </p>
-      <p>
-        <strong>Activity:</strong> {userData.activity}
       </p>
     </div>
   );

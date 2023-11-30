@@ -6,10 +6,9 @@ import DisplayInfo from './components/DisplayInfo';
 function App() {
   return (
     <Router>
-      <h1>My Health Journal</h1>
       <Routes>
-        <Route path="/" element={<PersonalInfoForm />} />
-        <Route path="/display" element={<DisplayInfo />} />
+      <Route path="/" element={<PersonalInfoForm />} />
+      <Route path="/display" element={<DisplayInfo />} />
       </Routes>
     </Router>
   );
