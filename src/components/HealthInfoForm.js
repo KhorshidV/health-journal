@@ -1,11 +1,9 @@
 import React, {useState} from 'react';
-import { useNavigate,useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const HealthInfoForm = () => {
 
-    const location = useLocation();
     const navigate = useNavigate();
-    const userData = location.state?.userData || {};
 
     const [healthData, setHealthData] = useState({
       water:'',
@@ -14,7 +12,11 @@ const HealthInfoForm = () => {
   
     const handleSubmit = (e) => {
       e.preventDefault();
+
+      const userData = JSON.parse(localStorage.getItem('userData')) || {};
       const userDataWithHealth = { ...userData, ...healthData };
+      localStorage.setItem('userData', JSON.stringify(userDataWithHealth));
+
       console.log('user data with health: ', userDataWithHealth);
       navigate('/display', { state: { userData: userDataWithHealth } });
     };

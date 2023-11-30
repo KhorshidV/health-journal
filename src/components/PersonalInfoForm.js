@@ -21,6 +21,7 @@ const PersonalInfoForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    localStorage.setItem('userData', JSON.stringify(userData));
     navigate('/health-info', { state: { userData } });
   };
 

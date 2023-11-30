@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom';
 
 const DisplayInfo = () => {
     const location = useLocation();
-    const userData = location.state?.userData;
+    const userData = location.state?.userData || JSON.parse(localStorage.getItem('userData')) || {};
 
     if (!userData) {
         return <div>No data to display.</div>;
