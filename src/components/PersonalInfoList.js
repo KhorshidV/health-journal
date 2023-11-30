@@ -1,7 +1,7 @@
 import React from 'react';
 
 const DisplayInfo = ({ location }) => {
-  // Check if location and location.state are defined
+
   if (!location || !location.state || !location.state.userData) {
     return <div>No data to display.</div>;
   }

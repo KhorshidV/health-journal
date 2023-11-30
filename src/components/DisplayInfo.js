@@ -24,6 +24,12 @@ const DisplayInfo = () => {
       <p>
         <strong>Gender:</strong> {userData.gender}
       </p>
+      <p>
+        <strong>Exercise:</strong> {userData.exercise}
+      </p>
+      <p>
+        <strong>Water:</strong> {userData.water}
+      </p>
     </div>
   );
 };

@@ -21,8 +21,7 @@ const PersonalInfoForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Submitting form with data:', userData);
-    navigate('/display', { state: { userData } });
+    navigate('/health-info', { state: { userData } });
   };
 
   return (
