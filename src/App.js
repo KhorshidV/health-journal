@@ -39,6 +39,7 @@ function App() {
               <DisplayInfo userData={authenticatedUser} onLogout={handleLogout} />
             ) : (
               <>
+                <h1>My Health Journal</h1>
                 <LoginForm onLogin={handleLogin} />
                 <RegistrationForm onRegister={handleRegister} />
               </>
